@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My Wasm Project</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+  </head>
+
+  <body>
+    <div x-data=""></div>
+    <script type="module">
+      // Importing WASM as a JS module requires us to call an init function provided by the default export.
+      // This is planned to be changed in the future.
+      import { default as wasm, greet } from "./pkg/imageprocessing_wasm.js";
+
+      wasm().then((module) => {
+        // The boiler plate project comes with a `greet` function that calls:
+        // `alert("Hello, hello-wasm!");`
+        greet();
+      });
+    </script>
+  </body>
+</html>
